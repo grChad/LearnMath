@@ -1,12 +1,14 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {View, Text} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { useTheme } from '../hooks/useColor'
+
+import StackNavigation from './StackNavigation'
 
 export default function NavigationApp() {
-  return (
-    <NavigationContainer>
-      <View>
-        <Text>Hello</Text>
-      </View>
-    </NavigationContainer>
-  );
+	const theme = useTheme()
+
+	return (
+		<NavigationContainer theme={theme}>
+			<StackNavigation />
+		</NavigationContainer>
+	)
 }
