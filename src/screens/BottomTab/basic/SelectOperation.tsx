@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Pressable, View } from 'react-native'
+import { StyleSheet, Pressable, View } from 'react-native'
 
 // Store
 import { setOperation } from '../../../store/ducks/basicSlice'

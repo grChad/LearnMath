@@ -10,7 +10,14 @@ export default function WorkingPage() {
 				source={require('../../assets/images/working.png')}
 				style={{ width: 300, height: 300, objectFit: 'contain' }}
 			/>
-			<Text style={{ color: scheme.text, fontSize: 30, marginTop: 20 }}>
+			<Text
+				style={{
+					color: scheme.text,
+					fontSize: 30,
+					marginTop: 20,
+					fontFamily: 'ComicNeue',
+				}}
+			>
 				Estamos Cambeando, todavia no esta disponible.
 			</Text>
 		</View>

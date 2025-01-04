@@ -56,15 +56,9 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 15,
 	},
-	title: {
-		// fontFamily: 'Asap',
-		fontSize: 25,
-		color: '#414559',
-		marginBottom: 10,
-	},
-
+	title: { fontFamily: 'Asap', fontSize: 25, color: '#414559', marginBottom: 10 },
 	nameOperation: {
-		// fontFamily: 'ComicNeue',
+		fontFamily: 'ComicNeue',
 		fontSize: 14,
 		paddingHorizontal: 15,
 		borderRadius: 20,
