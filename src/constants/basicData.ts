@@ -1,20 +1,20 @@
 export enum BasicOperationOptions {
-	Suma = 'Suma',
-	Resta = 'Resta',
-	Multiplicacion = 'Multiplicación',
-	Divicion = 'División',
+	Addition = 'Suma',
+	Subtraction = 'Resta',
+	Multiplication = 'Multiplicación',
+	Division = 'División',
 }
 
 export enum BasicLevelOptions {
-	Facil = 'Fácil',
+	Easy = 'Fácil',
 	Normal = 'Normal',
-	Dificil = 'Dificil',
-	Genio = 'Genio',
+	Hard = 'Difícil',
+	Expert = 'Experto',
 }
 
 export enum QuantilyOptions {
-	Uno = 20,
-	Dos = 40,
-	Tres = 60,
-	Cuatro = 80,
+	One = 20,
+	Two = 40,
+	Three = 60,
+	Four = 80,
 }
