@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import WorkingPage from '../../../components/WorkingPage'
 
 export default function EquationTabScreen() {
 	return (
-		<View>
-			<Text>Equation Screen</Text>
+		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+			<WorkingPage />
 		</View>
 	)
 }
