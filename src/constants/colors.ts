@@ -7,7 +7,7 @@ export const DarkTheme: Theme = {
 		background: '#232634',
 		card: '#151e27',
 		text: 'rgb(229, 229, 231)',
-		border: 'rgb(39, 39, 41)',
+		border: '#303446',
 		notification: 'rgb(255, 69, 58)',
 	},
 	fonts: {
