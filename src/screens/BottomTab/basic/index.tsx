@@ -1,17 +1,13 @@
-import { View, Text, Button } from 'react-native'
-import { setOperation } from '../../../store/ducks/basicSlice'
-import { useAppSelector, useAppDispatch } from '../../../hooks/store'
+import { View, useWindowDimensions } from 'react-native'
+import SelectOperation from './SelectOperation'
 
 export default function BasicTabScreen() {
-	const operation = useAppSelector((state) => state.basic.operation)
-	const dispatch = useAppDispatch()
-
-	console.log(operation)
+	const { width } = useWindowDimensions()
+	console.log(width)
 
 	return (
-		<View>
-			<Text>Basic Tab Screen</Text>
-			<Button title="Change Operation" onPress={() => dispatch(setOperation(null))} />
+		<View style={{ flex: 1, alignItems: 'center', rowGap: 30, paddingVertical: 20 }}>
+			<SelectOperation />
 		</View>
 	)
 }
