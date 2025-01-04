@@ -12,13 +12,17 @@ import { BasicOperationOptions as Operation } from '../../../constants/basicData
 import CardCommon from '../../../components/CardCommon'
 import { SvgPlus, SvgMinus, SvgMultiplication, SvgDivision } from './SvgAnimated'
 
-export default function SelectOperation() {
+interface Props {
+	soundPress: () => void
+}
+export default function SelectOperation({ soundPress }: Props) {
 	const scheme = useScheme()
 
 	const theOperation = useAppSelector((state) => state.basic.operation)
 	const dispatch = useAppDispatch()
 
 	const handlePress = (op: BasicOperationType) => {
+		soundPress()
 		dispatch(setOperation(op))
 	}
 
