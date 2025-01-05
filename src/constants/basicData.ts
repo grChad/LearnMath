@@ -1,3 +1,4 @@
+// Tiene que ser igual a /types/store.d.ts 'BasicOperationType'
 export enum BasicOperationOptions {
 	Addition = 'Suma',
 	Subtraction = 'Resta',
@@ -5,6 +6,7 @@ export enum BasicOperationOptions {
 	Division = 'División',
 }
 
+// Tiene que ser igual a /types/store.d.ts 'BasicLevelType'
 export enum BasicLevelOptions {
 	Easy = 'Fácil',
 	Normal = 'Normal',
