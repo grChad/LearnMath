@@ -29,11 +29,12 @@ export default function BottomTabNavigation() {
 				tabBarLabelPosition: 'below-icon',
 				tabBarStyle: { height: 60 },
 				tabBarIconStyle: { marginBottom: 5 },
+				tabBarItemStyle: { backgroundColor: scheme.card },
 				tabBarLabel: ({ children, color, focused }) => (
 					<Text
 						style={{
 							color: color,
-							fontWeight: focused && !isHorizontal ? 'bold' : '500',
+							fontWeight: focused && !isHorizontal ? 'bold' : '400',
 							fontSize: 11,
 						}}
 					>
