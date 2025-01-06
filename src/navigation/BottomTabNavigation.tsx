@@ -1,6 +1,8 @@
-import { useWindowDimensions } from 'react-native'
+import { Text, useWindowDimensions } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import type { RootBottomTabParamList } from '../types/navigation'
+
+import { useScheme } from '../hooks/useColor'
 
 // components and icons
 import {
@@ -14,6 +16,7 @@ import { IconBasic, IconEquation, IconFunction, IconSetting } from '../component
 const Tab = createBottomTabNavigator<RootBottomTabParamList>()
 
 export default function BottomTabNavigation() {
+	const scheme = useScheme()
 	const { width, height } = useWindowDimensions()
 	const isHorizontal = width > height
 
@@ -24,6 +27,19 @@ export default function BottomTabNavigation() {
 				tabBarPosition: isHorizontal ? 'left' : 'bottom',
 				tabBarVariant: isHorizontal ? 'material' : 'uikit',
 				tabBarLabelPosition: 'below-icon',
+				tabBarStyle: { height: 60 },
+				tabBarIconStyle: { marginBottom: 5 },
+				tabBarLabel: ({ children, color, focused }) => (
+					<Text
+						style={{
+							color: color,
+							fontWeight: focused && !isHorizontal ? 'bold' : '500',
+							fontSize: 11,
+						}}
+					>
+						{children}
+					</Text>
+				),
 			}}
 			initialRouteName="Basic"
 		>
@@ -31,21 +47,42 @@ export default function BottomTabNavigation() {
 				name="Basic"
 				component={BasicTabScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => <IconBasic size={size} fill={color} />,
+					tabBarIcon: ({ color, size, focused }) => (
+						<IconBasic
+							size={size}
+							fill={color}
+							focused={focused}
+							bgColor={focused ? scheme.primaryLight : 'transparent'}
+						/>
+					),
 				}}
 			/>
 			<Tab.Screen
 				name="Equation"
 				component={EquationTabScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => <IconEquation size={size} fill={color} />,
+					tabBarIcon: ({ color, size, focused }) => (
+						<IconEquation
+							size={size}
+							fill={color}
+							focused={focused}
+							bgColor={focused ? scheme.primaryLight : 'transparent'}
+						/>
+					),
 				}}
 			/>
 			<Tab.Screen
 				name="Function"
 				component={FunctionTabScreen}
 				options={{
-					tabBarIcon: ({ color, size }) => <IconFunction size={size} fill={color} />,
+					tabBarIcon: ({ color, size, focused }) => (
+						<IconFunction
+							size={size}
+							fill={color}
+							focused={focused}
+							bgColor={focused ? scheme.primaryLight : 'transparent'}
+						/>
+					),
 				}}
 			/>
 			<Tab.Screen
@@ -53,7 +90,12 @@ export default function BottomTabNavigation() {
 				component={ConfigTabScreen}
 				options={{
 					tabBarIcon: ({ color, size, focused }) => (
-						<IconSetting size={size} fill={color} focused={focused} />
+						<IconSetting
+							size={size}
+							fill={color}
+							focused={focused}
+							bgColor={focused ? scheme.primaryLight : 'transparent'}
+						/>
 					),
 				}}
 			/>
