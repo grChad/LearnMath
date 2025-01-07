@@ -5,6 +5,7 @@ import Sound from 'react-native-sound'
 // components
 import SelectOperation from './operation/'
 import SelectLevel from './level'
+import SelectQuantily from './SelectQuantily'
 
 const sound_bubble = new Sound('select_bubble.wav', Sound.MAIN_BUNDLE, (error) => {
 	if (error) {
@@ -18,29 +19,40 @@ const sound_options = new Sound('select_options.wav', Sound.MAIN_BUNDLE, (error)
 	}
 })
 
+const sound_number = new Sound('select_number.wav', Sound.MAIN_BUNDLE, (error) => {
+	if (error) {
+		throw new Error(`sound_number: failed to load the sound ${error}`)
+	}
+})
+
 export default function BasicTabScreen() {
-	const pressButtonSelect = () => {
+	const pressButtonBubble = () => {
 		sound_bubble.play((success) => {
-			if (!success) {
-				throw new Error('sound_bubble: falla el audio')
-			}
+			if (!success) throw new Error('sound_bubble: falla el audio')
 		})
 	}
 
-	const pressButton = () => {
+	const pressButtonOotions = () => {
 		sound_options
 			.play((success) => {
-				if (!success) {
-					throw new Error('sound_options: falla el audio')
-				}
+				if (!success) throw new Error('sound_options: falla el audio')
 			})
 			.setVolume(0.5)
+	}
+
+	const pressButtonNumber = () => {
+		sound_number
+			.play((success) => {
+				if (!success) throw new Error('sound_number: falla el audio')
+			})
+			.setVolume(0.2)
 	}
 
 	useEffect(() => {
 		return () => {
 			sound_bubble.release()
 			sound_options.release()
+			sound_number.release()
 		}
 	}, [])
 
@@ -50,8 +62,9 @@ export default function BasicTabScreen() {
 			showsHorizontalScrollIndicator={false}
 		>
 			<View style={{ flex: 1, alignItems: 'center', rowGap: 30, paddingVertical: 20 }}>
-				<SelectOperation soundPress={pressButtonSelect} />
-				<SelectLevel soundPress={pressButton} />
+				<SelectOperation soundPress={pressButtonBubble} />
+				<SelectLevel soundPress={pressButtonOotions} />
+				<SelectQuantily soundPress={pressButtonNumber} />
 			</View>
 		</ScrollView>
 	)

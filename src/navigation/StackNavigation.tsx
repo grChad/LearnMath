@@ -19,7 +19,11 @@ export default function StackNavigation() {
 				navigationBarColor: scheme.card,
 			}}
 		>
-			<Stack.Screen name="Home" component={BottomTabNavigation} />
+			<Stack.Screen
+				name="Home"
+				component={BottomTabNavigation}
+				options={{ statusBarBackgroundColor: scheme.background }}
+			/>
 		</Stack.Navigator>
 	)
 }

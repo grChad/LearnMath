@@ -3,7 +3,7 @@ import type { Theme } from '@react-navigation/native'
 export const DarkTheme: Theme = {
 	dark: true,
 	colors: {
-		primary: '#96CBFE',
+		primary: '#6FB5F7',
 		background: '#121212',
 		card: '#1D2020',
 		text: '#DADADA',
