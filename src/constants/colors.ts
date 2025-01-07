@@ -3,7 +3,7 @@ import type { Theme } from '@react-navigation/native'
 export const DarkTheme: Theme = {
 	dark: true,
 	colors: {
-		primary: '#78bed3',
+		primary: '#96CBFE',
 		background: '#232634',
 		card: '#151e27',
 		text: 'rgb(229, 229, 231)',
@@ -33,9 +33,9 @@ export const DarkTheme: Theme = {
 export const DefaultTheme: Theme = {
 	dark: false,
 	colors: {
-		primary: '#207194',
+		primary: '#00649B',
 		background: '#F7F7F7',
-		card: '#FFFFFF',
+		card: '#F0F4F8',
 		text: 'rgb(28, 28, 30)',
 		border: 'rgb(216, 216, 216)',
 		notification: 'rgb(255, 59, 48)',
@@ -67,8 +67,7 @@ export const SchemeDarkColor = {
 	popup: '#484848',
 	pressPopup: '#585858',
 	light: '#D8D5D1',
-	primaryLight: '#004B76',
-	primaryDark: '#C6E1F4',
+	primarySelected: '#374A58',
 }
 
 export const SchemeLightColor = {
@@ -78,6 +77,5 @@ export const SchemeLightColor = {
 	popup: '#F5F5F5',
 	pressPopup: '#DFDFDF',
 	light: '#FFFFFF',
-	primaryLight: '#c2e8fe',
-	primaryDark: '#165475',
+	primarySelected: '#D5E5F7',
 }

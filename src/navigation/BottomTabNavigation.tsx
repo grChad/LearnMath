@@ -1,7 +1,7 @@
-import { Text, useWindowDimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import type { RootBottomTabParamList } from '../types/navigation'
 
+import type { RootBottomTabParamList } from '../types/navigation'
 import { useScheme } from '../hooks/useColor'
 
 // components and icons
@@ -30,17 +30,7 @@ export default function BottomTabNavigation() {
 				tabBarStyle: { height: 60 },
 				tabBarIconStyle: { marginBottom: 5 },
 				tabBarItemStyle: { backgroundColor: scheme.card },
-				tabBarLabel: ({ children, color, focused }) => (
-					<Text
-						style={{
-							color: color,
-							fontWeight: focused && !isHorizontal ? 'bold' : '400',
-							fontSize: 11,
-						}}
-					>
-						{children}
-					</Text>
-				),
+				tabBarLabelStyle: { fontSize: 11 },
 			}}
 			initialRouteName="Basic"
 		>
@@ -53,7 +43,7 @@ export default function BottomTabNavigation() {
 							size={size}
 							fill={color}
 							focused={focused}
-							bgColor={focused ? scheme.primaryLight : 'transparent'}
+							bgColor={focused ? scheme.primarySelected : 'transparent'}
 						/>
 					),
 				}}
@@ -67,7 +57,7 @@ export default function BottomTabNavigation() {
 							size={size}
 							fill={color}
 							focused={focused}
-							bgColor={focused ? scheme.primaryLight : 'transparent'}
+							bgColor={focused ? scheme.primarySelected : 'transparent'}
 						/>
 					),
 				}}
@@ -81,7 +71,7 @@ export default function BottomTabNavigation() {
 							size={size}
 							fill={color}
 							focused={focused}
-							bgColor={focused ? scheme.primaryLight : 'transparent'}
+							bgColor={focused ? scheme.primarySelected : 'transparent'}
 						/>
 					),
 				}}
@@ -95,7 +85,7 @@ export default function BottomTabNavigation() {
 							size={size}
 							fill={color}
 							focused={focused}
-							bgColor={focused ? scheme.primaryLight : 'transparent'}
+							bgColor={focused ? scheme.primarySelected : 'transparent'}
 						/>
 					),
 				}}
