@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import Sound from 'react-native-sound'
 
 // components
-import SelectOperation from './SelectOperation'
+import SelectOperation from './operation/'
 import SelectLevel from './level'
 
 const sound_bubble = new Sound('select_bubble.wav', Sound.MAIN_BUNDLE, (error) => {

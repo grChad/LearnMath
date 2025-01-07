@@ -1,21 +1,21 @@
 import { StyleSheet, Pressable, View } from 'react-native'
 
 // Store
-import { setOperation } from '../../../store/ducks/basicSlice'
-import { useAppSelector, useAppDispatch } from '../../../hooks/store'
+import { setOperation } from '../../../../store/ducks/basicSlice'
+import { useAppSelector, useAppDispatch } from '../../../../hooks/store'
 
-import { useScheme } from '../../../hooks/useColor'
-import type { BasicOperationType } from '../../../types/store'
-import { BasicOperationOptions as Operation } from '../../../constants/basicData'
+import { useScheme } from '../../../../hooks/useColor'
+import type { BasicOperationType } from '../../../../types/store'
+import { BasicOperationOptions as Operation } from '../../../../constants/basicData'
 
 // components
-import CardCommon from '../../../components/CardCommon'
+import CardCommon from '../../../../components/CardCommon'
 import { SvgPlus, SvgMinus, SvgMultiplication, SvgDivision } from './SvgAnimated'
 
 interface Props {
 	soundPress: () => void
 }
-export default function SelectOperation({ soundPress }: Props) {
+export default ({ soundPress }: Props) => {
 	const scheme = useScheme()
 
 	const theOperation = useAppSelector((state) => state.basic.operation)

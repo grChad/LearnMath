@@ -8,9 +8,7 @@ import { BasicLevelOptions as Level } from '../../../../constants/basicData'
 
 // components
 import CardCommon from '../../../../components/CardCommon'
-import ButtonLevel from './ButtonLevel'
-
-const MAX_HEIGHT_BUTTON = 35
+import LevelOptions from './LevelOptions'
 
 interface Props {
 	soundPress: () => void
@@ -28,19 +26,18 @@ export default function SelectLevel({ soundPress }: Props) {
 
 	return (
 		<CardCommon title="Elige un nivel">
-			<View style={{ flexDirection: 'row', columnGap: 10 }}>
+			<View
+				style={{
+					flexDirection: 'row',
+					flexWrap: 'wrap',
+					justifyContent: 'center',
+					gap: 10,
+				}}
+			>
 				{listLevel.map((ele) => {
 					return (
-						<Pressable
-							onPress={() => handlePress(ele)}
-							key={ele}
-							style={{
-								backgroundColor: 'rgb(47, 143, 208)',
-								borderRadius: 10,
-								height: MAX_HEIGHT_BUTTON,
-							}}
-						>
-							<ButtonLevel title={ele} maxHeight={MAX_HEIGHT_BUTTON} />
+						<Pressable onPress={() => handlePress(ele)} key={ele}>
+							<LevelOptions title={ele} />
 						</Pressable>
 					)
 				})}
