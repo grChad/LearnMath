@@ -4,9 +4,9 @@ export const DarkTheme: Theme = {
 	dark: true,
 	colors: {
 		primary: '#96CBFE',
-		background: '#232634',
-		card: '#151e27',
-		text: 'rgb(229, 229, 231)',
+		background: '#121212',
+		card: '#1D2020',
+		text: '#DADADA',
 		border: '#303446',
 		notification: 'rgb(255, 69, 58)',
 	},
@@ -34,9 +34,9 @@ export const DefaultTheme: Theme = {
 	dark: false,
 	colors: {
 		primary: '#00649B',
-		background: '#F7F7F7',
+		background: '#FFFFFF',
 		card: '#F0F4F8',
-		text: 'rgb(28, 28, 30)',
+		text: '#2E2E2E',
 		border: 'rgb(216, 216, 216)',
 		notification: 'rgb(255, 59, 48)',
 	},
@@ -63,7 +63,7 @@ export const DefaultTheme: Theme = {
 export const SchemeDarkColor = {
 	isDark: true,
 	...DarkTheme.colors,
-	secondText: '#ACABB3',
+	secondText: '#9B9B9B',
 	popup: '#484848',
 	pressPopup: '#585858',
 	light: '#D8D5D1',
@@ -73,7 +73,7 @@ export const SchemeDarkColor = {
 export const SchemeLightColor = {
 	isDark: false,
 	...DefaultTheme.colors,
-	secondText: '#5B5961',
+	secondText: '#787878',
 	popup: '#F5F5F5',
 	pressPopup: '#DFDFDF',
 	light: '#FFFFFF',
