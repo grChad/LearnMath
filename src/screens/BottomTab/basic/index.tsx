@@ -6,6 +6,7 @@ import Sound from 'react-native-sound'
 import SelectOperation from './operation/'
 import SelectLevel from './level'
 import SelectQuantily from './SelectQuantily'
+import ButtonPlay from './ButtonPlay'
 
 const sound_bubble = new Sound('select_bubble.wav', Sound.MAIN_BUNDLE, (error) => {
 	if (error) {
@@ -61,10 +62,20 @@ export default function BasicTabScreen() {
 			showsVerticalScrollIndicator={false}
 			showsHorizontalScrollIndicator={false}
 		>
-			<View style={{ flex: 1, alignItems: 'center', rowGap: 30, paddingVertical: 20 }}>
+			<View
+				style={{
+					flexDirection: 'row',
+					flexWrap: 'wrap',
+					justifyContent: 'space-evenly',
+					alignItems: 'center',
+					gap: 30,
+					padding: 20,
+				}}
+			>
 				<SelectOperation soundPress={pressButtonBubble} />
 				<SelectLevel soundPress={pressButtonOotions} />
 				<SelectQuantily soundPress={pressButtonNumber} />
+				<ButtonPlay />
 			</View>
 		</ScrollView>
 	)
