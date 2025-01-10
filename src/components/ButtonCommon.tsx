@@ -15,8 +15,16 @@ interface Props {
 	title: string
 	onPress: () => void
 	disabled?: boolean
+	bgColor?: string
+	bgColorDark?: string
 }
-export default function ButtonCommon({ title, onPress, disabled = false }: Props) {
+export default function ButtonCommon({
+	title,
+	onPress,
+	disabled = false,
+	bgColor,
+	bgColorDark,
+}: Props) {
 	const scheme = useScheme()
 	const height = useSharedValue(0)
 
@@ -31,13 +39,13 @@ export default function ButtonCommon({ title, onPress, disabled = false }: Props
 					style={[
 						styles.buttonPressable,
 						{
-							backgroundColor: scheme.primary,
+							backgroundColor: bgColor || scheme.primary,
 							boxShadow: [
 								{
 									offsetX: 2,
 									offsetY: -1,
 									blurRadius: 4,
-									color: scheme.primaryDark,
+									color: bgColorDark || scheme.primaryDark,
 									inset: true,
 								},
 							],
@@ -53,7 +61,12 @@ export default function ButtonCommon({ title, onPress, disabled = false }: Props
 					</View>
 				</Pressable>
 			</View>
-			<View style={[styles.boxBorderBottom, { backgroundColor: scheme.primaryDark }]} />
+			<View
+				style={[
+					styles.boxBorderBottom,
+					{ backgroundColor: bgColorDark || scheme.primaryDark },
+				]}
+			/>
 		</View>
 	)
 }
