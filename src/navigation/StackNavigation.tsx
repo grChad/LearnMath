@@ -30,7 +30,11 @@ export default function StackNavigation() {
 				component={BottomTabNavigation}
 				options={{ statusBarBackgroundColor: scheme.background }}
 			/>
-			<Stack.Screen name="BasicGame" component={BasicGameStackScreen} />
+			<Stack.Screen
+				name="BasicGame"
+				component={BasicGameStackScreen}
+				options={{ navigationBarColor: scheme.background }}
+			/>
 		</Stack.Navigator>
 	)
 }
