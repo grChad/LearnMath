@@ -1,8 +1,8 @@
-import { useWindowDimensions } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import type { RootBottomTabParamList } from '../types/navigation'
 import { useScheme } from '../hooks/useColor'
+import { useWide } from '../hooks/useWide'
 
 // components and icons
 import {
@@ -17,17 +17,20 @@ const Tab = createBottomTabNavigator<RootBottomTabParamList>()
 
 export default function BottomTabNavigation() {
 	const scheme = useScheme()
-	const { width, height } = useWindowDimensions()
-	const isHorizontal = width > height
+
+	const isWide = useWide()
 
 	return (
 		<Tab.Navigator
 			screenOptions={{
 				headerShown: false,
-				tabBarPosition: isHorizontal ? 'left' : 'bottom',
-				tabBarVariant: isHorizontal ? 'material' : 'uikit',
+				tabBarPosition: isWide ? 'left' : 'bottom',
+				tabBarVariant: isWide ? 'material' : 'uikit',
 				tabBarLabelPosition: 'below-icon',
-				tabBarStyle: { height: 60 },
+				tabBarStyle: {
+					height: isWide ? '100%' : 60,
+					backgroundColor: isWide ? scheme.background : scheme.card,
+				},
 				tabBarIconStyle: { marginBottom: 5 },
 				tabBarItemStyle: { backgroundColor: scheme.card },
 				tabBarLabelStyle: { fontSize: 11 },
