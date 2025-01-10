@@ -3,11 +3,17 @@ import type { RouteProp } from '@react-navigation/native'
 
 export type RootStackParamList = {
 	Home: undefined
-	Prueba
+	BasicGame: undefined
 }
 
 export type HomeRouteProp = RouteProp<RootStackParamList, 'Home'>
 export type HomeNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>
+
+export type BasicGameRouteProp = RouteProp<RootStackParamList, 'BasicGame'>
+export type BasicGameNavigationProp = NativeStackNavigationProp<
+	RootStackParamList,
+	'BasicGame'
+>
 
 export type RootBottomTabParamList = {
 	Basic: undefined
