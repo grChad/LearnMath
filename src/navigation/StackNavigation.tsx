@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { useWideNavigation } from '../hooks/useWide'
+import { useWide } from '../hooks/useWide'
 import { useScheme } from '../hooks/useColor'
 import type { RootStackParamList } from '../types/navigation'
 
@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function StackNavigation() {
 	const scheme = useScheme()
-	const useWideNa = useWideNavigation()
+	const useWideNa = useWide()
 
 	return (
 		<Stack.Navigator
