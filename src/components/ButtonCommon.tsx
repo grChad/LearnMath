@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-end',
 		position: 'relative',
 	},
-	floatBox: { width: '100%', position: 'absolute', top: 0, zIndex: 10 },
+	floatBox: { width: '100%', position: 'absolute', top: 0, zIndex: 50 },
 	buttonPressable: {
 		width: '100%',
 		height: 50,
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
 	boxBorderBottom: {
 		height: 30,
 		width: '100%',
+		zIndex: 45,
 		borderBottomLeftRadius: RADIUS,
 		borderBottomRightRadius: RADIUS,
 	},
