@@ -21,6 +21,7 @@ export default function StackNavigation() {
 				statusBarBackgroundColor: scheme.card,
 				statusBarStyle: scheme.isDark ? 'light' : 'dark',
 				navigationBarColor: scheme.card,
+				navigationBarTranslucent: false,
 				orientation: isWidedeNav ? 'default' : 'portrait',
 			}}
 		>
