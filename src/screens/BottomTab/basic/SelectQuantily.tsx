@@ -1,6 +1,6 @@
 import { Text, View, Pressable, StyleSheet } from 'react-native'
 import { useScheme } from '../../../hooks/useColor'
-import { QuantilyOptions as QOpts } from '../../../constants/basicData'
+import { QuantilyOptions } from '../../../constants/basicData'
 
 // Store
 import { setQuantily } from '../../../store/ducks/basicSlice'
@@ -27,22 +27,17 @@ export default function SelectQuantily({ soundPress }: Props) {
 		return num === quantily ? scheme.primary : scheme.secondText
 	}
 
-	// change enums to number[]
-	const listQuantily = Object.values(QOpts).filter(
-		(ele) => typeof ele === 'number',
-	) as number[]
-
 	return (
 		<CardCommon title="¿Cuantos harás?">
 			<View style={{ flexDirection: 'row', gap: 10 }}>
-				{listQuantily.map((num) => (
+				{QuantilyOptions.map(({ quantily }) => (
 					<Pressable
-						key={num.toString()}
-						onPress={() => changeQuantily(num)}
+						key={quantily.toString()}
+						onPress={() => changeQuantily(quantily)}
 						style={{ position: 'relative' }}
 					>
-						<IconRoundedSquare size={60} hasStroke stroke={setColor(num)} />
-						<Text style={[styles.text, { color: setColor(num) }]}>{num}</Text>
+						<IconRoundedSquare size={60} hasStroke stroke={setColor(quantily)} />
+						<Text style={[styles.text, { color: setColor(quantily) }]}>{quantily}</Text>
 					</Pressable>
 				))}
 			</View>

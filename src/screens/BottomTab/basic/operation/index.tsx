@@ -5,7 +5,6 @@ import { setOperation } from '../../../../store/ducks/basicSlice'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/store'
 
 import { useScheme } from '../../../../hooks/useColor'
-import type { BasicOperationType } from '../../../../types/store'
 import { BasicOperationOptions as Operation } from '../../../../constants/basicData'
 
 // components
@@ -21,29 +20,32 @@ export default ({ soundPress }: Props) => {
 	const theOperation = useAppSelector((state) => state.basic.operation)
 	const dispatch = useAppDispatch()
 
-	const handlePress = (op: BasicOperationType) => {
+	const handlePress = (op: string) => {
 		soundPress()
 		dispatch(setOperation(op))
 	}
 
+	const sharedProps = { operation: theOperation, selectStroke: scheme.text }
+
 	return (
 		<CardCommon title="¿Que operacion haras?" useTag={true} tagName={theOperation}>
 			<View style={[styles.boxMain]}>
-				<Pressable onPressIn={() => handlePress(Operation.Addition)}>
-					<SvgPlus operation={theOperation} selectStroke={scheme.text} />
-				</Pressable>
-
-				<Pressable onPressIn={() => handlePress(Operation.Subtraction)}>
-					<SvgMinus operation={theOperation} selectStroke={scheme.text} />
-				</Pressable>
-
-				<Pressable onPressIn={() => handlePress(Operation.Multiplication)}>
-					<SvgMultiplication operation={theOperation} selectStroke={scheme.text} />
-				</Pressable>
-
-				<Pressable onPressIn={() => handlePress(Operation.Division)}>
-					<SvgDivision operation={theOperation} selectStroke={scheme.text} />
-				</Pressable>
+				{Operation.map(({ operation, color }) => (
+					<Pressable key={operation} onPressIn={() => handlePress(operation)}>
+						{operation === Operation[0].operation && (
+							<SvgPlus {...sharedProps} color={color} />
+						)}
+						{operation === Operation[1].operation && (
+							<SvgMinus {...sharedProps} color={color} />
+						)}
+						{operation === Operation[2].operation && (
+							<SvgMultiplication {...sharedProps} color={color} />
+						)}
+						{operation === Operation[3].operation && (
+							<SvgDivision {...sharedProps} color={color} />
+						)}
+					</Pressable>
+				))}
 			</View>
 		</CardCommon>
 	)

@@ -4,7 +4,7 @@ import { View, Pressable } from 'react-native'
 import { setLevelBasic } from '../../../../store/ducks/basicSlice'
 import { useAppDispatch } from '../../../../hooks/store'
 
-import { BasicLevelOptions as Level } from '../../../../constants/basicData'
+import { BasicLevelOptions } from '../../../../constants/basicData'
 
 // components
 import CardCommon from '../../../../components/CardCommon'
@@ -21,9 +21,6 @@ export default function SelectLevel({ soundPress }: Props) {
 		soundPress()
 	}
 
-	// change enums to string[]
-	const listLevel: string[] = Object.values(Level)
-
 	return (
 		<CardCommon title="Elige un nivel">
 			<View
@@ -34,7 +31,7 @@ export default function SelectLevel({ soundPress }: Props) {
 					gap: 10,
 				}}
 			>
-				{listLevel.map((ele) => {
+				{BasicLevelOptions.map(({ level: ele }) => {
 					return (
 						<Pressable onPress={() => handlePress(ele)} key={ele}>
 							<LevelOptions title={ele} />

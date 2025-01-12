@@ -3,31 +3,24 @@ import { StyleSheet, Text, View } from 'react-native'
 import { useAppSelector } from '../../../../hooks/store'
 
 import { useScheme } from '../../../../hooks/useColor'
-import { BasicLevelOptions as Lv } from '../../../../constants/basicData'
+import { BasicLevelOptions } from '../../../../constants/basicData'
 
 export default ({ title }: { title: string }) => {
 	const scheme = useScheme()
-	const level = useAppSelector((state) => state.basic.level)
+	const currentLevel = useAppSelector((state) => state.basic.level) // Store
 
-	const bgColor = () => {
-		let default_color = '#E2E2E2'
+	const bgColorDinamic =
+		BasicLevelOptions.find(
+			({ level }) => title === currentLevel && level === currentLevel,
+		)?.color || '#E2E2E2'
 
-		if (title === level) {
-			if (level === Lv.Easy) default_color = 'lightgreen'
-			if (level === Lv.Normal) default_color = 'gold'
-			if (level === Lv.Hard) default_color = 'tomato'
-			if (level === Lv.Expert) default_color = '#9A76FF'
-		}
-
-		return default_color
-	}
 	return (
 		<View
 			style={[
 				styles.container,
 				{
 					borderColor: scheme.isDark ? scheme.pressPopup : scheme.text,
-					backgroundColor: bgColor(),
+					backgroundColor: bgColorDinamic,
 				},
 			]}
 		>

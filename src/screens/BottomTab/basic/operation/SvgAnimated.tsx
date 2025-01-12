@@ -1,3 +1,10 @@
+/*
+  Autor: Jesus Gabriel Rivera
+  Copyright: Copyright © Jesus Gabriel Rivera 2023
+  Licencia: CC BY-SA 4.0
+  Descripción: Estos 4 SVG fueron creados por Jesus Gabriel Rivera
+*/
+
 import { useEffect } from 'react'
 import Animated, {
 	useSharedValue,
@@ -6,7 +13,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import Svg, { Path, Circle } from 'react-native-svg'
 
-import { BasicOperationOptions as Operation } from '../../../../constants/basicData'
+import { BasicOperationOptions } from '../../../../constants/basicData'
 
 const SIZE = 70
 const SIZE_ZOOM = 85
@@ -15,13 +22,16 @@ const AnimatedSvg = Animated.createAnimatedComponent(Svg)
 interface SvgProps {
 	operation: string | null
 	selectStroke: string
+	color: { bg: string; border: string }
 }
 
-export const SvgPlus = ({ operation, selectStroke }: SvgProps) => {
+export const SvgPlus = ({ operation, selectStroke, color }: SvgProps) => {
 	const size = useSharedValue(SIZE) // animated
 
-	const isOk = operation === Operation.Addition
-	const stroke = isOk ? selectStroke : '#0B6666'
+	console.log(color)
+
+	const isOk = operation === BasicOperationOptions[0].operation
+	const stroke = isOk ? selectStroke : color.border
 
 	const handlePress = () => {
 		if (isOk) size.value = SIZE_ZOOM
@@ -40,13 +50,9 @@ export const SvgPlus = ({ operation, selectStroke }: SvgProps) => {
 
 	return (
 		<AnimatedSvg animatedProps={animatedProps} viewBox="0 0 512 512">
-			{/* Autor: Jesus Gabriel Rivera */}
-			{/* Copyright: Copyright © Jesus Gabriel Rivera 2023 */}
-			{/* Licencia: CC BY-SA 4.0 */}
-			{/* Descripción: Este SVG fue creado por Jesus Gabriel Rivera. */}
 			<Path
 				d="M 90.063423,90.052578 C 122.884,56.655947 199.53887,56.010073 256.00547,56.000056 c 56.47546,-0.01002 131.71675,1.283308 165.98019,33.998987 34.26345,32.715677 34.01265,109.515977 34.01243,165.998397 -2.2e-4,56.48022 0.8652,131.03433 -34.01243,165.99171 -34.87763,34.95739 -109.50432,34.00468 -165.98019,34.00519 -56.48091,5.1e-4 -130.43333,1.25736 -165.995579,-34.00519 C 54.447647,386.72661 56.002064,312.47666 56.012374,255.99744 56.022681,199.52992 57.242843,123.4492 90.063423,90.052578 Z"
-				fill="#008b8b"
+				fill={color.bg}
 				strokeWidth={12}
 				stroke={stroke}
 			/>
@@ -60,11 +66,11 @@ export const SvgPlus = ({ operation, selectStroke }: SvgProps) => {
 	)
 }
 
-export const SvgMinus = ({ operation, selectStroke }: SvgProps) => {
+export const SvgMinus = ({ operation, selectStroke, color }: SvgProps) => {
 	const size = useSharedValue(SIZE) // animated
 
-	const isOk = operation === Operation.Subtraction
-	const stroke = isOk ? selectStroke : '#AD3838'
+	const isOk = operation === BasicOperationOptions[1].operation
+	const stroke = isOk ? selectStroke : color.border
 
 	const handlePress = () => {
 		if (isOk) size.value = SIZE_ZOOM
@@ -83,13 +89,9 @@ export const SvgMinus = ({ operation, selectStroke }: SvgProps) => {
 
 	return (
 		<AnimatedSvg animatedProps={animatedProps} viewBox="0 0 512 512">
-			{/* Autor: Jesus Gabriel Rivera */}
-			{/* Copyright: Copyright © Jesus Gabriel Rivera 2023 */}
-			{/* Licencia: CC BY-SA 4.0 */}
-			{/* Descripción: Este SVG fue creado por Jesus Gabriel Rivera. */}
 			<Path
 				d="M 90.063423,90.052578 C 122.884,56.655947 199.53887,56.010073 256.00547,56.000056 c 56.47546,-0.01002 131.71675,1.283308 165.98019,33.998987 34.26345,32.715677 34.01265,109.515977 34.01243,165.998397 -2.2e-4,56.48022 0.8652,131.03433 -34.01243,165.99171 -34.87763,34.95739 -109.50432,34.00468 -165.98019,34.00519 -56.48091,5.1e-4 -130.43333,1.25736 -165.995579,-34.00519 C 54.447647,386.72661 56.002064,312.47666 56.012374,255.99744 56.022681,199.52992 57.242843,123.4492 90.063423,90.052578 Z"
-				fill="#cd5c5c"
+				fill={color.bg}
 				strokeWidth={12}
 				stroke={stroke}
 			/>
@@ -103,11 +105,11 @@ export const SvgMinus = ({ operation, selectStroke }: SvgProps) => {
 	)
 }
 
-export const SvgMultiplication = ({ operation, selectStroke }: SvgProps) => {
+export const SvgMultiplication = ({ operation, selectStroke, color }: SvgProps) => {
 	const size = useSharedValue(SIZE) // animated
 
-	const isOk = operation === Operation.Multiplication
-	const stroke = isOk ? selectStroke : '#D48F10'
+	const isOk = operation === BasicOperationOptions[2].operation
+	const stroke = isOk ? selectStroke : color.border
 
 	const handlePress = () => {
 		if (isOk) size.value = SIZE_ZOOM
@@ -126,13 +128,9 @@ export const SvgMultiplication = ({ operation, selectStroke }: SvgProps) => {
 
 	return (
 		<AnimatedSvg animatedProps={animatedProps} viewBox="0 0 512 512">
-			{/* Autor: Jesus Gabriel Rivera */}
-			{/* Copyright: Copyright © Jesus Gabriel Rivera 2023 */}
-			{/* Licencia: CC BY-SA 4.0 */}
-			{/* Descripción: Este SVG fue creado por Jesus Gabriel Rivera. */}
 			<Path
 				d="M 90.063423,90.052578 C 122.884,56.655947 199.53887,56.010073 256.00547,56.000056 c 56.47546,-0.01002 131.71675,1.283308 165.98019,33.998987 34.26345,32.715677 34.01265,109.515977 34.01243,165.998397 -2.2e-4,56.48022 0.8652,131.03433 -34.01243,165.99171 -34.87763,34.95739 -109.50432,34.00468 -165.98019,34.00519 -56.48091,5.1e-4 -130.43333,1.25736 -165.995579,-34.00519 C 54.447647,386.72661 56.002064,312.47666 56.012374,255.99744 56.022681,199.52992 57.242843,123.4492 90.063423,90.052578 Z"
-				fill="#ffa500"
+				fill={color.bg}
 				strokeWidth={12}
 				stroke={stroke}
 			/>
@@ -146,11 +144,11 @@ export const SvgMultiplication = ({ operation, selectStroke }: SvgProps) => {
 	)
 }
 
-export const SvgDivision = ({ operation, selectStroke }: SvgProps) => {
+export const SvgDivision = ({ operation, selectStroke, color }: SvgProps) => {
 	const size = useSharedValue(SIZE) // animated
 
-	const isOk = operation === Operation.Division
-	const stroke = isOk ? selectStroke : '#5947C8'
+	const isOk = operation === BasicOperationOptions[3].operation
+	const stroke = isOk ? selectStroke : color.border
 
 	const handlePress = () => {
 		if (isOk) size.value = SIZE_ZOOM
@@ -175,13 +173,9 @@ export const SvgDivision = ({ operation, selectStroke }: SvgProps) => {
 			strokeWidth={3}
 			stroke="black"
 		>
-			{/* Autor: Jesus Gabriel Rivera */}
-			{/* Copyright: Copyright © Jesus Gabriel Rivera 2023 */}
-			{/* Licencia: CC BY-SA 4.0 */}
-			{/* Descripción: Este SVG fue creado por Jesus Gabriel Rivera. */}
 			<Path
 				d="M 90.063423,90.052578 C 122.884,56.655947 199.53887,56.010073 256.00547,56.000056 c 56.47546,-0.01002 131.71675,1.283308 165.98019,33.998987 34.26345,32.715677 34.01265,109.515977 34.01243,165.998397 -2.2e-4,56.48022 0.8652,131.03433 -34.01243,165.99171 -34.87763,34.95739 -109.50432,34.00468 -165.98019,34.00519 -56.48091,5.1e-4 -130.43333,1.25736 -165.995579,-34.00519 C 54.447647,386.72661 56.002064,312.47666 56.012374,255.99744 56.022681,199.52992 57.242843,123.4492 90.063423,90.052578 Z"
-				fill="#7b68ee"
+				fill={color.bg}
 				strokeWidth={12}
 				stroke={stroke}
 			/>
