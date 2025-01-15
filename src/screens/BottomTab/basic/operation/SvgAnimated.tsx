@@ -28,8 +28,6 @@ interface SvgProps {
 export const SvgPlus = ({ operation, selectStroke, color }: SvgProps) => {
 	const size = useSharedValue(SIZE) // animated
 
-	console.log(color)
-
 	const isOk = operation === BasicOperationOptions[0].operation
 	const stroke = isOk ? selectStroke : color.border
 
