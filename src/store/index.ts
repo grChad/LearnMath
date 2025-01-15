@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import basicReducer from './ducks/basicSlice'
+import basicGameReducer from './ducks/basicGameSlice'
 
 export const store = configureStore({
 	reducer: {
 		basic: basicReducer,
+		basicGame: basicGameReducer,
 	},
 })
 
