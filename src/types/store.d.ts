@@ -1,9 +1,26 @@
-export type BasicOperationType = 'Suma' | 'Resta' | 'Multiplicación' | 'División' | null
-export type BasicLevelType = 'Fácil' | 'Normal' | 'Difícil' | 'Experto' | null
-export type QuantilyType = 20 | 40 | 60 | 80 | null
+export type BasicOperationType = 'Suma' | 'Resta' | 'Multiplicación' | 'División'
+export type BasicLevelType = 'Fácil' | 'Normal' | 'Difícil' | 'Experto'
+export type QuantilyType = 20 | 40 | 60 | 80
 
 export interface BasicState {
-	operation: BasicOperationType
-	level: BasicLevelType
-	quantily: QuantilyType
+	operation: BasicOperationType | null
+	level: BasicLevelType | null
+	quantily: QuantilyType | null
+}
+
+export type BasicOperationDataType = {
+	operatorA: number
+	operatorB: number
+	result: number
+	resultLength: number
+	optionsAnswers: number[]
+}
+
+export interface BasicGameState {
+	countProgress: number
+	isCorrect: boolean | null
+	success: number
+
+	operationData: BasicOperationDataType | null
+	selectedAnswer: number | null
 }
