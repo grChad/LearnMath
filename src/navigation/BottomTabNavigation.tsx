@@ -11,14 +11,20 @@ import {
 	FunctionTabScreen,
 	ConfigTabScreen,
 } from '../screens/BottomTab'
-import { IconBasic, IconEquation, IconFunction, IconSetting } from '../components/Icons'
+import { IconBasic, IconEquation, IconFunction, IconSetting } from './IconButton'
+import React from 'react'
 
 const Tab = createBottomTabNavigator<RootBottomTabParamList>()
 
 export default function BottomTabNavigation() {
 	const scheme = useScheme()
-
 	const isWide = useWide()
+
+	type IconProps = { focused: boolean; color: string; size: number }
+	const iconProps = (props: IconProps) => {
+		const { focused, color, size } = props
+		return { focused, color, size, bgSelect: scheme.primarySelected }
+	}
 
 	return (
 		<Tab.Navigator
@@ -40,58 +46,22 @@ export default function BottomTabNavigation() {
 			<Tab.Screen
 				name="Basic"
 				component={BasicTabScreen}
-				options={{
-					tabBarIcon: ({ color, size, focused }) => (
-						<IconBasic
-							size={size}
-							fill={color}
-							focused={focused}
-							bgColor={focused ? scheme.primarySelected : 'transparent'}
-						/>
-					),
-				}}
+				options={{ tabBarIcon: (props) => <IconBasic {...iconProps(props)} /> }}
 			/>
 			<Tab.Screen
 				name="Equation"
 				component={EquationTabScreen}
-				options={{
-					tabBarIcon: ({ color, size, focused }) => (
-						<IconEquation
-							size={size}
-							fill={color}
-							focused={focused}
-							bgColor={focused ? scheme.primarySelected : 'transparent'}
-						/>
-					),
-				}}
+				options={{ tabBarIcon: (props) => <IconEquation {...iconProps(props)} /> }}
 			/>
 			<Tab.Screen
 				name="Function"
 				component={FunctionTabScreen}
-				options={{
-					tabBarIcon: ({ color, size, focused }) => (
-						<IconFunction
-							size={size}
-							fill={color}
-							focused={focused}
-							bgColor={focused ? scheme.primarySelected : 'transparent'}
-						/>
-					),
-				}}
+				options={{ tabBarIcon: (props) => <IconFunction {...iconProps(props)} /> }}
 			/>
 			<Tab.Screen
 				name="Config"
 				component={ConfigTabScreen}
-				options={{
-					tabBarIcon: ({ color, size, focused }) => (
-						<IconSetting
-							size={size}
-							fill={color}
-							focused={focused}
-							bgColor={focused ? scheme.primarySelected : 'transparent'}
-						/>
-					),
-				}}
+				options={{ tabBarIcon: (props) => <IconSetting {...iconProps(props)} /> }}
 			/>
 		</Tab.Navigator>
 	)
