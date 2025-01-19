@@ -22,7 +22,7 @@ export default function StackNavigation() {
 				statusBarStyle: scheme.isDark ? 'light' : 'dark',
 				navigationBarColor: scheme.card,
 				navigationBarTranslucent: false,
-				orientation: isWidedeNav ? 'default' : 'portrait',
+				orientation: isWidedeNav ? 'default' : 'portrait_up',
 			}}
 		>
 			<Stack.Screen
