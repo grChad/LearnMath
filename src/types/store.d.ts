@@ -23,5 +23,5 @@ export interface BasicGameState {
 	success: number
 
 	operationData: BasicOperationDataType
-	selectedAnswer: number | null
+	selectedAnswer: string[]
 }

@@ -21,7 +21,7 @@ const initialState: BasicGameState = {
 	isCorrect: null,
 	success: 0,
 	operationData: operationDataDefault,
-	selectedAnswer: null,
+	selectedAnswer: [],
 }
 
 export const basicGameSlice = createSlice({
