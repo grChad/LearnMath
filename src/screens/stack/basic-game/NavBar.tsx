@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
-import { useScheme } from '../../../hooks/useColor'
 
-import { BasicLevelOptions as dataLevel } from '../../../constants/basicData'
+import { useScheme } from '../../../hooks/useColor'
+import { BasicLevelOptions } from '../../../constants/basicData'
 
 // Store
 import { useAppSelector } from '../../../hooks/store'
@@ -11,27 +11,16 @@ export default function NavBar() {
 	const scheme = useScheme()
 	const { level, quantily, operation } = useAppSelector((state) => state.basic)
 
-	let arrayStars: number[] = [0, 0, 0, 0]
-	if (level === dataLevel.Easy) arrayStars = [1, 0, 0, 0]
-	if (level === dataLevel.Normal) arrayStars = [1, 1, 0, 0]
-	if (level === dataLevel.Hard) arrayStars = [1, 1, 1, 0]
-	if (level === dataLevel.Expert) arrayStars = [1, 1, 1, 1]
+	const arrayStars = BasicLevelOptions.find((ele) => ele.level === level)?.stars || [
+		0, 0, 0, 0,
+	]
 
 	return (
-		<View
-			style={{
-				backgroundColor: scheme.card,
-				flexDirection: 'row',
-				justifyContent: 'space-between',
-				alignItems: 'center',
-				gap: 20,
-				paddingHorizontal: 10,
-				paddingVertical: 5,
-			}}
-		>
-			<Text style={{ fontFamily: 'Asap', color: scheme.text, fontSize: 20 }}>
+		<View style={[styles.container, { backgroundColor: scheme.card }]}>
+			<Text style={[styles.titleOperation, { textShadowColor: scheme.text }]}>
 				{operation}
 			</Text>
+
 			{/* Level section */}
 			<View style={{ alignItems: 'center' }}>
 				<Text style={{ fontFamily: 'ComicNeue', color: scheme.text, fontSize: 16 }}>
@@ -66,6 +55,20 @@ export default function NavBar() {
 }
 
 const styles = StyleSheet.create({
+	container: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		gap: 20,
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+	},
+	titleOperation: {
+		fontFamily: 'Asap',
+		color: '#ED8A78',
+		fontSize: 22,
+		textShadowRadius: 1,
+	},
 	boxStars: {
 		marginTop: 5,
 		flexDirection: 'row',
