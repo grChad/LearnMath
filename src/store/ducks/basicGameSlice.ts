@@ -7,12 +7,13 @@ import type {
 } from '../../types/store'
 import { Sum } from '../../helpers/basicOperations'
 
-const operationDataDefault = {
+const operationDataDefault: BasicOperationDataType = {
 	operatorA: 9,
 	operatorB: 8,
 	result: 17,
 	resultLength: 2,
 	optionsAnswers: [2, 8, 15, 21, 17],
+	listCharacters: ['9', '+', '8', '='],
 }
 
 const initialState: BasicGameState = {
