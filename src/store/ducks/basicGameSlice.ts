@@ -7,11 +7,19 @@ import type {
 } from '../../types/store'
 import { Sum } from '../../helpers/basicOperations'
 
+const operationDataDefault = {
+	operatorA: 9,
+	operatorB: 8,
+	result: 17,
+	resultLength: 2,
+	optionsAnswers: [2, 8, 15, 21, 17],
+}
+
 const initialState: BasicGameState = {
 	countProgress: 0,
 	isCorrect: null,
 	success: 0,
-	operationData: null,
+	operationData: operationDataDefault,
 	selectedAnswer: null,
 }
 
@@ -37,7 +45,7 @@ export const basicGameSlice = createSlice({
 				payload: { operator: BasicOperationType; level: BasicLevelType } | 'reset'
 			},
 		) => {
-			if (action.payload === 'reset') state.operationData = null
+			if (action.payload === 'reset') state.operationData = operationDataDefault
 			else {
 				const { operator, level } = action.payload
 				state.operationData = getOperationData(operator, level)

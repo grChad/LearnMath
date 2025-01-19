@@ -21,6 +21,6 @@ export interface BasicGameState {
 	isCorrect: boolean | null
 	success: number
 
-	operationData: BasicOperationDataType | null
+	operationData: BasicOperationDataType
 	selectedAnswer: number | null
 }
