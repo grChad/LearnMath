@@ -18,13 +18,11 @@ export default function NavBar() {
 	return (
 		<View style={[styles.container, { backgroundColor: scheme.card }]}>
 			<Text
-				style={[
-					styles.titleOperation,
-					{
-						textShadowColor: scheme.text,
-						fontSize: operation && operation.length > 10 ? 20 : 25,
-					},
-				]}
+				style={{
+					fontSize: operation && operation.length > 10 ? 20 : 25,
+					color: scheme.text,
+					fontFamily: 'Asap',
+				}}
 			>
 				{operation}
 			</Text>
@@ -71,7 +69,6 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 10,
 		paddingVertical: 5,
 	},
-	titleOperation: { fontFamily: 'Asap', color: '#ED8A78', textShadowRadius: 1 },
 	boxStars: {
 		marginTop: 5,
 		flexDirection: 'row',
