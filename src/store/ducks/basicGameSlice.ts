@@ -52,10 +52,20 @@ export const basicGameSlice = createSlice({
 				state.operationData = getOperationData(operator, level)
 			}
 		},
+		setSelectedAnswer: (state, action: PayloadAction<string[] | 'reset'>) => {
+			if (action.payload === 'reset') state.selectedAnswer = []
+			else state.selectedAnswer = action.payload
+		},
 	},
 })
 
-export const { setCountProgress, setIsCorrect } = basicGameSlice.actions
+export const {
+	setCountProgress,
+	setIsCorrect,
+	setSuccess,
+	setOperationData,
+	setSelectedAnswer,
+} = basicGameSlice.actions
 export default basicGameSlice.reducer
 
 /**
