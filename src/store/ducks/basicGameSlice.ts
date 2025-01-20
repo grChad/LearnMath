@@ -58,8 +58,9 @@ export const basicGameSlice = createSlice({
 			if (action.payload === 'reset') state.selectedAnswer = []
 			else state.selectedAnswer = action.payload
 		},
-		setGeneralDisabled: (state, action: PayloadAction<boolean>) => {
-			state.generalDisabled = action.payload
+		setGeneralDisabled: (state, action: PayloadAction<'enabled' | 'disabled'>) => {
+			if (action.payload === 'disabled') state.generalDisabled = true
+			if (action.payload === 'enabled') state.generalDisabled = false
 		},
 	},
 })
