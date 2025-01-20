@@ -61,12 +61,12 @@ export default function Options() {
 							styles.buttonPressed,
 							{
 								opacity: pressed ? 0.5 : 1,
-								borderColor: scheme.primaryDark,
-								backgroundColor: scheme.primary,
+								backgroundColor: scheme.primary.concat('99'),
+								borderColor: scheme.primary,
 							},
 						]}
 					>
-						{ele.tag({ size: 30, color: scheme.background, stroke: scheme.text })}
+						{ele.tag({ size: 30, color: 'whitesmoke', stroke: 'black' })}
 					</Pressable>
 				))}
 				<Pressable
@@ -75,14 +75,14 @@ export default function Options() {
 					style={({ pressed }) => [
 						styles.buttonPressed,
 						{
-							opacity: pressed ? 0.5 : 1,
-							borderColor: scheme.primaryDark,
-							backgroundColor: scheme.primary,
 							width: WIDTH * 2 + GAP,
+							opacity: pressed ? 0.5 : 1,
+							backgroundColor: scheme.primary.concat('99'),
+							borderColor: scheme.primary,
 						},
 					]}
 				>
-					<IconDeleteLeft size={WIDTH} fill="#ED8A78" stroke="black" />
+					<IconDeleteLeft size={WIDTH} fill={scheme.notification} stroke="black" />
 				</Pressable>
 			</View>
 		</View>
