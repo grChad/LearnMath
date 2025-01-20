@@ -21,6 +21,7 @@ export interface BasicGameState {
 	countProgress: number
 	isCorrect: boolean | null
 	success: number
+	generalDisabled: boolean
 
 	operationData: BasicOperationDataType
 	selectedAnswer: string[]

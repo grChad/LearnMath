@@ -20,6 +20,8 @@ const initialState: BasicGameState = {
 	countProgress: 0,
 	isCorrect: null,
 	success: 0,
+	generalDisabled: false,
+
 	operationData: operationDataDefault,
 	selectedAnswer: [],
 }
@@ -56,6 +58,9 @@ export const basicGameSlice = createSlice({
 			if (action.payload === 'reset') state.selectedAnswer = []
 			else state.selectedAnswer = action.payload
 		},
+		setGeneralDisabled: (state, action: PayloadAction<boolean>) => {
+			state.generalDisabled = action.payload
+		},
 	},
 })
 
@@ -65,6 +70,7 @@ export const {
 	setSuccess,
 	setOperationData,
 	setSelectedAnswer,
+	setGeneralDisabled,
 } = basicGameSlice.actions
 export default basicGameSlice.reducer
 
