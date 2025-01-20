@@ -1,5 +1,4 @@
 import { StyleSheet, View } from 'react-native'
-import { v4 as uuid } from 'uuid'
 
 import type { TypeIconsAndSymbolsProps as IconsProps } from '../../../types/more'
 import { useScheme } from '../../../hooks/useColor'
@@ -15,6 +14,7 @@ import {
 
 const WIDTH = (70 * 2) / 3
 const HEIGHT = 70
+const COLOR_NUMBER = '#CA9EE6'
 
 export default function Operations() {
 	const scheme = useScheme()
@@ -55,7 +55,7 @@ export default function Operations() {
 					<View key={index.toString()}>
 						{ele?.tag({
 							size: HEIGHT,
-							color: ele.type === 'number' ? '#C0CAF5' : '#ED8A78',
+							color: ele.type === 'number' ? COLOR_NUMBER : scheme.notification,
 							stroke: scheme.text,
 						})}
 					</View>
@@ -72,7 +72,7 @@ export default function Operations() {
 				>
 					{listResults.map((ele, index) => (
 						<View key={index.toString()}>
-							{ele?.tag({ size: HEIGHT, color: '#C0CAF5', stroke: scheme.text })}
+							{ele?.tag({ size: HEIGHT, color: COLOR_NUMBER, stroke: scheme.text })}
 						</View>
 					))}
 				</View>
