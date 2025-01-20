@@ -20,7 +20,6 @@ const GAP = 5
 export default function Options() {
 	const scheme = useScheme()
 	const { selectedAnswer, operationData } = useAppSelector((state) => state.basicGame)
-	console.log(selectedAnswer)
 	const dispatch = useAppDispatch()
 
 	// biome-ignore format:
