@@ -8,7 +8,7 @@ export const DarkTheme: Theme = {
 		card: '#1D2020',
 		text: '#DADADA',
 		border: '#303446',
-		notification: 'rgb(255, 69, 58)',
+		notification: '#E78284',
 	},
 	fonts: {
 		regular: {
@@ -38,7 +38,7 @@ export const DefaultTheme: Theme = {
 		card: '#F0F4F8',
 		text: '#2E2E2E',
 		border: 'rgb(216, 216, 216)',
-		notification: 'rgb(255, 59, 48)',
+		notification: '#ff6c6b',
 	},
 	fonts: {
 		regular: {
