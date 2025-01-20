@@ -41,7 +41,7 @@ export const Sum = (lv: BasicLevelType): ReturnType => {
 
 	// Desordenamos las opciones, usando el algoritmo de Fisher-Yates
 	const optionsAnswers = sortFisherYates(answer)
-	const listCharacters = `${operatorA}=${operatorB}=`.split('')
+	const listCharacters = `${operatorA}+${operatorB}=`.split('')
 
 	return { operatorA, operatorB, result, resultLength, optionsAnswers, listCharacters }
 }
