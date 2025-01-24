@@ -9,7 +9,7 @@ import Animated, {
 import { useScheme } from '../hooks/useColor'
 
 const RADIUS = 23
-const TIME_DURATION = 200
+const TIME_DURATION = 150
 
 interface Props {
 	title: string
