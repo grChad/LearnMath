@@ -30,8 +30,9 @@ export const basicGameSlice = createSlice({
 	name: 'basic-game',
 	initialState: initialState,
 	reducers: {
-		setCountProgress: (state, action: PayloadAction<'reset' | 'next'>) => {
+		setCountProgress: (state, action: PayloadAction<'reset' | 'next' | 'init'>) => {
 			if (action.payload === 'reset') state.countProgress = 0
+			if (action.payload === 'init') state.countProgress = 1
 			if (action.payload === 'next') state.countProgress += 1
 		},
 		setIsCorrect: (state, action: PayloadAction<boolean | 'reset'>) => {
