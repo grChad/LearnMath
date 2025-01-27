@@ -19,7 +19,7 @@ const operationDataDefault: BasicOperationDataType = {
 const initialState: BasicGameState = {
 	countProgress: 0,
 	isCorrect: null,
-	success: 0,
+	success: 0, // cantidad de veces que se ha acertado
 	generalDisabled: false,
 
 	operationData: operationDataDefault,
