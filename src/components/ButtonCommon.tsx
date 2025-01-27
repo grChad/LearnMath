@@ -7,6 +7,7 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import { useScheme } from '../hooks/useColor'
+import { useState } from 'react'
 
 const RADIUS = 23
 const TIME_DURATION = 150
@@ -15,46 +16,45 @@ interface Props {
 	title: string
 	onPress: () => void
 	disabled?: boolean
-	bgColor?: string
-	bgColorDark?: string
+	color?: { bg: string; border: string }
 }
-export default function ButtonCommon({
-	title,
-	onPress,
-	disabled = false,
-	bgColor,
-	bgColorDark,
-}: Props) {
+
+export default function ButtonCommon({ title, onPress, disabled = false, color }: Props) {
+	const [onePress, setOnePress] = useState(false)
 	const scheme = useScheme()
 	const height = useSharedValue(0)
 
 	const animatedStyle = useAnimatedStyle(() => ({ height: height.value }))
+
+	const handlePress = () => {
+		setOnePress(true)
+		height.value = withRepeat(withTiming(5, { duration: TIME_DURATION }), 2, true)
+		setTimeout(() => onPress(), TIME_DURATION)
+		setTimeout(() => setOnePress(false), TIME_DURATION * 2)
+	}
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.floatBox}>
 				<Animated.View style={animatedStyle} />
 				<Pressable
-					disabled={disabled}
+					disabled={disabled || onePress}
 					style={[
 						styles.buttonPressable,
 						{
-							backgroundColor: bgColor || scheme.primary,
+							backgroundColor: color?.bg || scheme.primary,
 							boxShadow: [
 								{
 									offsetX: 2,
 									offsetY: -1,
 									blurRadius: 4,
-									color: bgColorDark || scheme.primaryDark,
+									color: color?.border || scheme.primaryDark,
 									inset: true,
 								},
 							],
 						},
 					]}
-					onPress={() => {
-						height.value = withRepeat(withTiming(5, { duration: TIME_DURATION }), 2, true)
-						setTimeout(() => onPress(), TIME_DURATION)
-					}}
+					onPress={handlePress}
 				>
 					<View style={styles.boxIntermediate}>
 						<Text style={[styles.title, { color: scheme.background }]}>{title}</Text>
@@ -64,7 +64,7 @@ export default function ButtonCommon({
 			<View
 				style={[
 					styles.boxBorderBottom,
-					{ backgroundColor: bgColorDark || scheme.primaryDark },
+					{ backgroundColor: color?.border || scheme.primaryDark },
 				]}
 			/>
 		</View>
