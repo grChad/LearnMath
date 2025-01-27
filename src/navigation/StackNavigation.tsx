@@ -6,7 +6,7 @@ import type { RootStackParamList } from '../types/navigation'
 
 // NOTE: component BottomTab from '@react-navigatoin/bottom-tabs'
 import BottomTabNavigation from './BottomTabNavigation'
-import { BasicGameStackScreen } from '../screens/stack/'
+import { BasicGameStackScreen, SummaryStackScreen } from '../screens/stack/'
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -35,6 +35,7 @@ export default function StackNavigation() {
 				component={BasicGameStackScreen}
 				options={{ navigationBarColor: scheme.background }}
 			/>
+			<Stack.Screen name="Summary" component={SummaryStackScreen} />
 		</Stack.Navigator>
 	)
 }
