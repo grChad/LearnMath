@@ -19,7 +19,9 @@ const GAP = 5
 
 export default function Options() {
 	const scheme = useScheme()
-	const { selectedAnswer, operationData } = useAppSelector((state) => state.basicGame)
+	const { selectedAnswer, operationData, generalDisabled } = useAppSelector(
+		(state) => state.basicGame,
+	)
 	const dispatch = useAppDispatch()
 
 	// biome-ignore format:
@@ -55,7 +57,7 @@ export default function Options() {
 				{ListaIcons.map((ele) => (
 					<Pressable
 						key={ele?.text}
-						disabled={disabled}
+						disabled={disabled || generalDisabled}
 						onPress={() => addElementResult(ele.text)}
 						style={({ pressed }) => [
 							styles.buttonPressed,
@@ -70,7 +72,7 @@ export default function Options() {
 					</Pressable>
 				))}
 				<Pressable
-					disabled={disabledDel}
+					disabled={disabledDel || generalDisabled}
 					onPress={delElementResult}
 					style={({ pressed }) => [
 						styles.buttonPressed,
