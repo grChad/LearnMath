@@ -10,6 +10,7 @@ import { IconStar } from '../../../components/Icons'
 export default function NavBar() {
 	const scheme = useScheme()
 	const { level, quantily, operation } = useAppSelector((state) => state.basic)
+	const { countProgress } = useAppSelector((state) => state.basicGame)
 
 	const arrayStars = BasicLevelOptions.find((ele) => ele.level === level)?.stars || [
 		0, 0, 0, 0,
@@ -52,7 +53,7 @@ export default function NavBar() {
 				</Text>
 				<View style={[styles.boxStars, { backgroundColor: scheme.primarySelected }]}>
 					<Text style={{ fontFamily: 'Asap', color: scheme.text, fontSize: 14 }}>
-						1 / {quantily}
+						{countProgress} / {quantily}
 					</Text>
 				</View>
 			</View>
