@@ -1,5 +1,6 @@
 import { View } from 'react-native'
 import { useWide } from '../../../hooks/useWide'
+import type { BasicGameNavigationProp } from '../../../types/navigation'
 
 // components
 import NavBar from './NavBar'
@@ -8,7 +9,10 @@ import Options from './Options'
 import HandleButton from './HandleButton'
 import ProgressBar from './ProgressBar'
 
-export default function () {
+interface Props {
+	navigation: BasicGameNavigationProp
+}
+export default function ({ navigation }: Props) {
 	const isWide = useWide()
 
 	return (
@@ -20,7 +24,7 @@ export default function () {
 				<Operations />
 				<View style={{ flex: 1 }}>
 					<Options />
-					<HandleButton />
+					<HandleButton navigateTosummary={() => navigation.navigate('Summary')} />
 				</View>
 			</View>
 		</View>
