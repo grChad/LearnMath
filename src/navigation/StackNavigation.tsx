@@ -35,7 +35,17 @@ export default function StackNavigation() {
 				component={BasicGameStackScreen}
 				options={{ navigationBarColor: scheme.background }}
 			/>
-			<Stack.Screen name="Summary" component={SummaryStackScreen} />
+			<Stack.Screen
+				name="Summary"
+				component={SummaryStackScreen}
+				options={{
+					title: 'Resultados',
+					headerTitleAlign: 'center',
+					headerTitleStyle: { fontFamily: 'Asap' },
+					headerShown: true,
+					headerLeft: () => <></>,
+				}}
+			/>
 		</Stack.Navigator>
 	)
 }
