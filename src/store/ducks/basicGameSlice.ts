@@ -8,13 +8,13 @@ import type {
 import { Sum } from '../../helpers/basicOperations'
 
 const operationDataDefault: BasicOperationDataType = {
-	operatorA: 9,
-	operatorB: 8,
-	result: 17,
-	resultLength: 2,
-	optionsAnswers: [2, 8, 15, 21, 17],
-	listCharacters: ['9', '+', '8'],
-	listCharactersComplete: ['9', '+', '8', '=', '1', '7'],
+	operandA: 9,
+	operandB: 8,
+	correctAnswer: 17,
+	answerLength: 2,
+	options: [2, 8, 15, 21, 17],
+	equation: ['9', '+', '8'],
+	equationWithResult: ['9', '+', '8', '=', '1', '7'],
 }
 
 const initialState: BasicGameState = {

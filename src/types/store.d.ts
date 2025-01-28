@@ -9,13 +9,13 @@ export interface BasicState {
 }
 
 export type BasicOperationDataType = {
-	operatorA: number
-	operatorB: number
-	result: number
-	resultLength: number
-	optionsAnswers: number[]
-	listCharacters: string[]
-	listCharactersComplete: string[]
+	operandA: number
+	operandB: number
+	correctAnswer: number
+	answerLength: number
+	options: number[]
+	equation: string[]
+	equationWithResult: string[]
 }
 
 export interface BasicGameState {

@@ -2,57 +2,46 @@ import type { BasicLevelType, BasicOperationDataType as ReturnType } from '../ty
 import { sortFisherYates } from './functions'
 
 export const Sum = (lv: BasicLevelType): ReturnType => {
-	let [minimo, maximo] = [0, 0]
+	const minimo = 1
+	let maximo = 9
 
-	if (lv === 'Fácil') [minimo, maximo] = [1, 9]
-	if (lv === 'Normal') [minimo, maximo] = [10, 99]
-	if (lv === 'Difícil') [minimo, maximo] = [100, 999]
-	if (lv === 'Experto') [minimo, maximo] = [1000, 9999]
+	if (lv === 'Fácil') maximo = 9
+	if (lv === 'Normal') maximo = 99
+	if (lv === 'Difícil') maximo = 999
+	if (lv === 'Experto') maximo = 9999
 
 	const number1 = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo
-	let number2 = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo
+	const number2 = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo
 
-	// Asegurarse de que number1 y number2 sean diferentes
-	while (number1 === number2) {
-		number2 = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo
-	}
-
-	const operatorA = Math.max(number1, number2)
-	const operatorB = Math.min(number1, number2)
-	const result = operatorA + operatorB
-	const resultLength = result.toString().length
+	const operandA = Math.max(number1, number2)
+	const operandB = Math.min(number1, number2)
+	const correctAnswer = operandA + operandB
+	const answerLength = correctAnswer.toString().length
 
 	// NOTE: Ver si esto se puede extraer en una función
 	// NOTE: Generamos 4 opciones que no sean iguales entre si ni iguales a la respuesta.
 	const answer: number[] = []
 	while (answer.length < 4) {
 		let num = 0
-		if (operatorA < 6) {
+		if (operandA < 6) {
 			num = Math.floor(Math.random() * 9) + 1
 		} else {
-			num = Math.floor(Math.random() * (operatorA - 1)) + (operatorA + 1)
+			num = Math.floor(Math.random() * (operandA - 1)) + (operandA + 1)
 		}
 
-		if (num !== result && !answer.includes(num)) {
+		if (num !== correctAnswer && !answer.includes(num)) {
 			answer.push(num)
 		}
 	}
-	answer.push(result) // agregar la respuesta correcta
+	answer.push(correctAnswer) // agregar la respuesta correcta
 
 	// Desordenamos las opciones, usando el algoritmo de Fisher-Yates
-	const optionsAnswers = sortFisherYates(answer)
-	const listCharacters = `${operatorA}+${operatorB}`.split('')
-	const listCharactersComplete = listCharacters.concat(`=${result}`)
+	const options = sortFisherYates(answer)
+	const equation = `${operandA}+${operandB}`.split('')
+	const equationWithResult = equation.concat(`=${correctAnswer}`)
 
-	return {
-		operatorA,
-		operatorB,
-		result,
-		resultLength,
-		optionsAnswers,
-		listCharacters,
-		listCharactersComplete,
-	}
+	// biome-ignore format:
+	return { operandA, operandB, correctAnswer, answerLength, options, equation, equationWithResult }
 }
 
 // export const Subtraction = (lv: string) => {

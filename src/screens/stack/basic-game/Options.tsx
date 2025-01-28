@@ -38,7 +38,7 @@ export default function Options() {
     { text: '0', tag: (props: IconsProps) => <IconZero {...props} />, type: 'symbol'},
 	]
 
-	const disabled = selectedAnswer.length >= operationData.resultLength
+	const disabled = selectedAnswer.length >= operationData.answerLength
 	const disabledDel = selectedAnswer.length === 0
 
 	const addElementResult = (ele: string) => {
