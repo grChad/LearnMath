@@ -13,7 +13,8 @@ const operationDataDefault: BasicOperationDataType = {
 	result: 17,
 	resultLength: 2,
 	optionsAnswers: [2, 8, 15, 21, 17],
-	listCharacters: ['9', '+', '8', '='],
+	listCharacters: ['9', '+', '8'],
+	listCharactersComplete: ['9', '+', '8', '=', '1', '7'],
 }
 
 const initialState: BasicGameState = {

@@ -15,6 +15,7 @@ export type BasicOperationDataType = {
 	resultLength: number
 	optionsAnswers: number[]
 	listCharacters: string[]
+	listCharactersComplete: string[]
 }
 
 export interface BasicGameState {
