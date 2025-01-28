@@ -38,10 +38,8 @@ export const Sum = (lv: BasicLevelType): ReturnType => {
 	// Desordenamos las opciones, usando el algoritmo de Fisher-Yates
 	const options = sortFisherYates(answer)
 	const equation = `${operandA}+${operandB}`.split('')
-	const equationWithResult = equation.concat(`=${correctAnswer}`)
 
-	// biome-ignore format:
-	return { operandA, operandB, correctAnswer, answerLength, options, equation, equationWithResult }
+	return { operandA, operandB, correctAnswer, answerLength, options, equation }
 }
 
 // export const Subtraction = (lv: string) => {

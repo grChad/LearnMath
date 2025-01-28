@@ -14,7 +14,6 @@ const operationDataDefault: BasicOperationDataType = {
 	answerLength: 2,
 	options: [2, 8, 15, 21, 17],
 	equation: ['9', '+', '8'],
-	equationWithResult: ['9', '+', '8', '=', '1', '7'],
 }
 
 const initialState: BasicGameState = {

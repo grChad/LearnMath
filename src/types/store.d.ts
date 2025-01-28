@@ -15,7 +15,6 @@ export type BasicOperationDataType = {
 	answerLength: number
 	options: number[]
 	equation: string[]
-	equationWithResult: string[]
 }
 
 export interface BasicGameState {
