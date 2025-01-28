@@ -12,13 +12,16 @@ import {
   IconAddition, IconSubstraction, IconMultiplication, IconDivision, IconEqual, IconEight
 } from '../../../components/icons/numbersAndSymbols'
 
-const WIDTH = (70 * 2) / 3
-const HEIGHT = 70
-const COLOR_NUMBER = '#CA9EE6'
-
 export default function Operations() {
 	const scheme = useScheme()
 	const { operationData, selectedAnswer } = useAppSelector((state) => state.basicGame) // Store
+	const { level } = useAppSelector((state) => state.basic)
+
+	const COLOR_NUMBER = '#CA9EE6'
+	const sizes =
+		level === 'Experto'
+			? { height: 58, width: (58 * 2) / 3 }
+			: { height: 70, width: (70 * 2) / 3 }
 
 	// biome-ignore format:
 	const ListaIcons = [
@@ -31,7 +34,7 @@ export default function Operations() {
 		{ text: '7', tag: (props: IconsProps) => <IconSeven {...props} />, type: 'number' },
 		{ text: '8', tag: (props: IconsProps) => <IconEight {...props} />, type: 'number' },
 		{ text: '9', tag: (props: IconsProps) => <IconNine {...props} />, type: 'number' },
-    { text: '0', tag: (props: IconsProps) => <IconZero {...props} />, type: 'symbol'},
+    { text: '0', tag: (props: IconsProps) => <IconZero {...props} />, type: 'number'},
 		{ text: '+', tag: (props: IconsProps) => <IconAddition {...props} />, type: 'symbol' },
 		{ text: '-', tag: (props: IconsProps) => <IconSubstraction {...props} />, type: 'symbol' },
 		{ text: '*', tag: (props: IconsProps) => <IconMultiplication {...props} />, type: 'symbol' },
@@ -40,7 +43,7 @@ export default function Operations() {
 	]
 
 	// Filtrar y ordenar de acuerdo al orden en listCharacters
-	const listaOperations = operationData.listCharacters
+	const listaOperations = operationData.equation
 		.map((op) => ListaIcons.find((item) => item.text === op))
 		.filter((item) => item !== undefined)
 
@@ -51,30 +54,44 @@ export default function Operations() {
 	return (
 		<View style={styles.container}>
 			<View style={styles.mainOperators}>
-				{listaOperations.map((ele, index) => (
-					<View key={index.toString()}>
-						{ele?.tag({
-							size: HEIGHT,
-							color: ele.type === 'number' ? COLOR_NUMBER : scheme.notification,
-							stroke: scheme.text,
-						})}
-					</View>
-				))}
-				<View
-					style={[
-						styles.boxResult,
-						{
-							minWidth: WIDTH * operationData.resultLength + 10,
-							backgroundColor: scheme.card,
-							borderColor: scheme.primarySelected,
-						},
-					]}
-				>
-					{listResults.map((ele, index) => (
+				<View style={styles.opLeftTop}>
+					{listaOperations.map((ele, index) => (
 						<View key={index.toString()}>
-							{ele?.tag({ size: HEIGHT, color: COLOR_NUMBER, stroke: scheme.text })}
+							{ele?.tag({
+								size: sizes.height,
+								color: ele.type === 'number' ? COLOR_NUMBER : scheme.notification,
+								stroke: scheme.text,
+							})}
 						</View>
 					))}
+				</View>
+				<View style={styles.opRightBottom}>
+					<IconEqual
+						size={sizes.height}
+						color={scheme.notification}
+						stroke={scheme.text}
+					/>
+					<View
+						style={[
+							styles.boxResult,
+							{
+								minWidth: sizes.width * operationData.answerLength + 10,
+								backgroundColor: scheme.card,
+								borderColor: scheme.primarySelected,
+								height: sizes.height + 10,
+							},
+						]}
+					>
+						{listResults.map((ele, index) => (
+							<View key={index.toString()}>
+								{ele?.tag({
+									size: sizes.height,
+									color: COLOR_NUMBER,
+									stroke: scheme.text,
+								})}
+							</View>
+						))}
+					</View>
 				</View>
 			</View>
 		</View>
@@ -83,9 +100,17 @@ export default function Operations() {
 
 const styles = StyleSheet.create({
 	container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-	mainOperators: { flexDirection: 'row', alignItems: 'center' },
+	mainOperators: {
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		justifyContent: 'center',
+		alignItems: 'center',
+		rowGap: 20,
+		padding: 10,
+	},
+	opLeftTop: { flexDirection: 'row', alignItems: 'center' },
+	opRightBottom: { flexDirection: 'row', alignItems: 'center' },
 	boxResult: {
-		height: HEIGHT + 10,
 		flexDirection: 'row',
 		borderWidth: 1,
 		borderRadius: 10,
