@@ -20,12 +20,6 @@ const sound_options = new Sound('select_options.wav', Sound.MAIN_BUNDLE, (error)
 	}
 })
 
-const sound_number = new Sound('select_number.wav', Sound.MAIN_BUNDLE, (error) => {
-	if (error) {
-		throw new Error(`sound_number: failed to load the sound ${error}`)
-	}
-})
-
 export default function BasicTabScreen() {
 	const pressButtonBubble = () => {
 		sound_bubble.play((success) => {
@@ -33,7 +27,7 @@ export default function BasicTabScreen() {
 		})
 	}
 
-	const pressButtonOotions = () => {
+	const pressButtonOptions = () => {
 		sound_options
 			.play((success) => {
 				if (!success) throw new Error('sound_options: falla el audio')
@@ -41,19 +35,10 @@ export default function BasicTabScreen() {
 			.setVolume(0.5)
 	}
 
-	const pressButtonNumber = () => {
-		sound_number
-			.play((success) => {
-				if (!success) throw new Error('sound_number: falla el audio')
-			})
-			.setVolume(0.2)
-	}
-
 	useEffect(() => {
 		return () => {
 			sound_bubble.release()
 			sound_options.release()
-			sound_number.release()
 		}
 	}, [])
 
@@ -73,8 +58,8 @@ export default function BasicTabScreen() {
 				}}
 			>
 				<SelectOperation soundPress={pressButtonBubble} />
-				<SelectLevel soundPress={pressButtonOotions} />
-				<SelectQuantily soundPress={pressButtonNumber} />
+				<SelectLevel soundPress={pressButtonOptions} />
+				<SelectQuantily soundPress={pressButtonBubble} />
 				<ButtonPlay />
 			</View>
 		</ScrollView>
