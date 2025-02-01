@@ -5,7 +5,7 @@ import type {
 	BasicLevelType,
 	BasicOperationDataType,
 } from '../../types/store'
-import { Sum } from '../../helpers/basicOperations'
+import { Sum, Subtraction } from '../../helpers/basicOperations'
 
 const operationDataDefault: BasicOperationDataType = {
 	operandA: 9,
@@ -88,7 +88,7 @@ function getOperationData(operator: BasicOperationType, level: BasicLevelType) {
 	if (operator === 'Suma') {
 		result = Sum(level)
 	} else if (operator === 'Resta') {
-		result = Sum(level)
+		result = Subtraction(level)
 	} else if (operator === 'Multiplicación') {
 		result = Sum(level)
 	} else if (operator === 'División') {
