@@ -1,8 +1,14 @@
-import { View } from 'react-native'
+import { useEffect } from 'react'
+import { Alert, BackHandler, View } from 'react-native'
 import Sound from 'react-native-sound'
 
 import { useWide } from '../../../hooks/useWide'
 import type { BasicGameNavigationProp } from '../../../types/navigation'
+
+// State
+import { setOperation, setLevelBasic, setQuantily } from '../../../store/ducks/basicSlice'
+import { setSuccess } from '../../../store/ducks/basicGameSlice'
+import { useAppDispatch } from '../../../hooks/store'
 
 // components
 import NavBar from './NavBar'
@@ -29,6 +35,7 @@ interface Props {
 }
 export default function ({ navigation }: Props) {
 	const isWide = useWide()
+	const dispatch = useAppDispatch()
 
 	const playSoundCorrect = () => {
 		sound_correct.play((success) => {
@@ -41,6 +48,35 @@ export default function ({ navigation }: Props) {
 			if (!success) throw new Error('sound_fail: falla el audio')
 		})
 	}
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <No dependencies>
+	useEffect(() => {
+		const backActionHandler = () => {
+			Alert.alert('¡Salir!', 'Perderas todo tu progreso', [
+				{ text: 'Mejor lo termino', onPress: () => null, style: 'cancel' },
+				{
+					text: 'Quiero salir 😭',
+					onPress: () => {
+						dispatch(setOperation(null))
+						dispatch(setLevelBasic(null))
+						dispatch(setQuantily(null))
+
+						dispatch(setSuccess('reset'))
+
+						navigation.goBack() // return to 'HomeScreen'
+					},
+				},
+			])
+
+			return true
+		}
+
+		BackHandler.addEventListener('hardwareBackPress', backActionHandler)
+
+		return () => {
+			BackHandler.removeEventListener('hardwareBackPress', backActionHandler)
+		}
+	}, [])
 
 	return (
 		<View style={{ flex: 1 }}>
