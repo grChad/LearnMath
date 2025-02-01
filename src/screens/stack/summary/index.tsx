@@ -1,11 +1,13 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, BackHandler } from 'react-native'
 import type { SummaryNavigationProp } from '../../../types/navigation'
 import ButtonCommon from '../../../components/ButtonCommon'
 import { useScheme } from '../../../hooks/useColor'
 import { BasicLevelOptions } from '../../../constants/basicData'
 
 // State
-import { useAppSelector } from '../../../hooks/store'
+import { setOperation, setLevelBasic, setQuantily } from '../../../store/ducks/basicSlice'
+import { setSuccess } from '../../../store/ducks/basicGameSlice'
+import { useAppDispatch, useAppSelector } from '../../../hooks/store'
 
 // components
 import {
@@ -15,6 +17,7 @@ import {
 	IconSubstraction,
 } from '../../../components/icons/numbersAndSymbols'
 import { IconStar } from '../../../components/icons/Icons'
+import { useEffect } from 'react'
 
 interface Props {
 	navigation: SummaryNavigationProp
@@ -23,6 +26,7 @@ export default function ({ navigation }: Props) {
 	const { level, quantily, operation } = useAppSelector((state) => state.basic)
 	const success = useAppSelector((state) => state.basicGame.success)
 	const scheme = useScheme()
+	const dispatch = useAppDispatch()
 
 	const iconSharedProps = {
 		size: 60,
@@ -33,6 +37,26 @@ export default function ({ navigation }: Props) {
 	const arrayStars = BasicLevelOptions.find((item) => item.level === level)?.stars || [
 		0, 0, 0, 0,
 	]
+
+	const exitAndReset = () => {
+		dispatch(setOperation(null))
+		dispatch(setLevelBasic(null))
+		dispatch(setQuantily(null))
+
+		dispatch(setSuccess('reset'))
+
+		navigation.popToTop() // navega hasta 'HomeScreen'
+		return true
+	}
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <No dependencies>
+	useEffect(() => {
+		BackHandler.addEventListener('hardwareBackPress', exitAndReset)
+
+		return () => {
+			BackHandler.removeEventListener('hardwareBackPress', exitAndReset)
+		}
+	}, [])
 
 	return (
 		<View style={{ flex: 1, padding: 20 }}>
@@ -74,18 +98,11 @@ export default function ({ navigation }: Props) {
 			</View>
 
 			<View style={{ marginHorizontal: 'auto', marginTop: 100 }}>
-				<ButtonCommon
-					title="¿Quieres otra partida?"
-					onPress={() => navigation.popToTop()}
-				/>
+				<ButtonCommon title="¿Quieres otra partida?" onPress={exitAndReset} />
 			</View>
 		</View>
 	)
 }
-
-// NOTE: falta formatear todos los datos antes de ir a home
-// eliminar las pantallas activas
-// inavilitar los el button return en `game` y `summary`
 
 const styles = StyleSheet.create({
 	box: { flexDirection: 'row', alignItems: 'center', columnGap: 20 },
