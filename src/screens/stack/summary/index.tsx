@@ -75,8 +75,8 @@ export default function ({ navigation }: Props) {
 
 			<View style={{ marginHorizontal: 'auto', marginTop: 100 }}>
 				<ButtonCommon
-					title="Regregar a home"
-					onPress={() => navigation.navigate('Home')}
+					title="¿Quieres otra partida?"
+					onPress={() => navigation.popToTop()}
 				/>
 			</View>
 		</View>
