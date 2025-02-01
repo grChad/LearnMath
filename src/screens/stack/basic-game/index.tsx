@@ -52,7 +52,7 @@ export default function ({ navigation }: Props) {
 				<View style={{ flex: 1 }}>
 					<Options />
 					<HandleButton
-						navigateTosummary={() => navigation.navigate('Summary')}
+						navigateTosummary={() => navigation.popTo('Summary')}
 						playSoundCorrect={playSoundCorrect}
 						playSoundFail={playSoundFail}
 					/>
