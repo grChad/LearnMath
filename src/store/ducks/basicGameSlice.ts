@@ -5,14 +5,13 @@ import type {
 	BasicLevelType,
 	BasicOperationDataType,
 } from '../../types/store'
-import { Sum, Subtraction } from '../../helpers/basicOperations'
+import { Sum, Subtraction, Multiplication, Division } from '../../helpers/basicOperations'
 
 const operationDataDefault: BasicOperationDataType = {
 	operandA: 9,
 	operandB: 8,
 	correctAnswer: 17,
 	answerLength: 2,
-	options: [2, 8, 15, 21, 17],
 	equation: ['9', '+', '8'],
 }
 
@@ -90,9 +89,9 @@ function getOperationData(operator: BasicOperationType, level: BasicLevelType) {
 	} else if (operator === 'Resta') {
 		result = Subtraction(level)
 	} else if (operator === 'Multiplicación') {
-		result = Sum(level)
+		result = Multiplication(level)
 	} else if (operator === 'División') {
-		result = Sum(level)
+		result = Division(level)
 	} else {
 		result = Sum(level)
 	}

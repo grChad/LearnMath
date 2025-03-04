@@ -13,7 +13,6 @@ export type BasicOperationDataType = {
 	operandB: number
 	correctAnswer: number
 	answerLength: number
-	options: number[]
 	equation: string[]
 }
 
