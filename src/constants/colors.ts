@@ -81,3 +81,12 @@ export const SchemeLightColor = {
 	primarySelected: '#D5E5F7',
 	primaryDark: '#0B4E73',
 }
+
+export enum NyanRainbow {
+	red = '#ff1211',
+	orange = '#ffa90b',
+	yellow = '#ffff07',
+	green = '#49ff0b',
+	blue = '#0eaeff',
+	purple = '#7643ff',
+}
